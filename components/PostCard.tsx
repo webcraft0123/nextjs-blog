@@ -9,7 +9,7 @@ const PostCard = ({ post }: { post: Post }) => (
         src="/blog.png"
         alt="blog"
         width={500}
-        height={300}
+        height={400}
         layout="responsive"
         objectFit="cover"
         className="rounded-xl"
