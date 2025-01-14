@@ -34,7 +34,6 @@ const Home = ({ posts }: Props) => {
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
 
   const filteredPosts = useMemo(() => {
-    console.log(selectedTags);
     return selectedTags.length > 0
       ? posts.filter((post) =>
           post.tags.some((tag) => selectedTags.includes(tag))
