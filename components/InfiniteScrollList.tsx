@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Image from "next/image";
 import InfiniteScroll from "react-infinite-scroll-component";
 import PostCard from "./PostCard";
 import ScrollToTop from "./ScrollToTop";
