@@ -17,7 +17,9 @@ const PostCard = ({ post }: { post: Post }) => (
     </div>
     <div className="mt-4 flex flex-col flex-1 justify-between">
       <div>
-        <h2 className="text-2xl font-semibold text-[#20FFB6]">{post.title}</h2>
+        <h2 className="text-xl md:text-2xl font-semibold text-[#20FFB6]">
+          {post.title}
+        </h2>
         <p className="py-2">{post.body.substring(0, 100)}...</p>
       </div>
       <div>

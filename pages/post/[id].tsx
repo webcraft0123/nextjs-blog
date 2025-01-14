@@ -46,7 +46,9 @@ const PostDetails = ({ post }: PostDetailsProps) => {
         <title>Blog - {post.title}</title>
       </Head>
       <div>
-        <h1 className="text-5xl text-center font-bold py-8">{post.title}</h1>
+        <h1 className="text-xl md:text-5xl text-center font-bold py-4 md:py-8">
+          {post.title}
+        </h1>
         <div className="p-4 my-8 rounded-xl bg-[#323232] text-center">
           <Image
             src="/blog-bg.png"
@@ -62,7 +64,7 @@ const PostDetails = ({ post }: PostDetailsProps) => {
           </div>
           <div className="pb-1 text-[#20FFB6]">{tags.join(" ")}</div>
         </div>
-        <p className="text-2xl">{post.body}</p>
+        <p className="text-lg md:text-2xl">{post.body}</p>
       </div>
     </>
   );

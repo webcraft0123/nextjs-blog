@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps = async () => {
         ...post,
         tags:
           Math.random() > 0.5
-            ? [tags[Math.floor(Math.random() * tags.length)]] 
+            ? [tags[Math.floor(Math.random() * tags.length)]]
             : [...tags],
       })),
     },
@@ -57,12 +57,12 @@ const Home = ({ posts }: Props) => {
       <Head>
         <title>Home Page - My Blog</title>
       </Head>
-      <div className="text-center py-8">
-        <div className="text-5xl font-bold">
+      <div className="text-center py-4 md:py-8">
+        <div className="text-3xl md:text-5xl font-bold">
           Our Blogs ({filteredPosts.length})
         </div>
       </div>
-      <div className="flex justify-center text-2xl gap-4 mb-8">
+      <div className="flex justify-center text-xl md:text-2xl gap-4 mb-8">
         {tags.map((tag, index) => (
           <span
             key={index}
