@@ -1,40 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Blog Application
 
-## Getting Started
+A responsive blog application built with **Next.js** and **Tailwind CSS** that fetches posts from an API, supports infinite scrolling, scroll-to-top functionality, and dynamic tag generation.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Installation and Setup Instructions
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Clone the Repository**
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+   ```bash
+   git clone https://github.com/webcraft0123/nextjs-blog.git
+   cd blog-app
+   ```
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+2. **Install Dependencies**
+   Install the required Node.js dependencies:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Run the Development Server**
+   Start the Next.js development server:
 
-## Learn More
+   ```bash
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. **Access the Application**
+   Open your browser and navigate to:
+   ```
+   http://localhost:3000
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Explanation of Approach
 
-## Deploy on Vercel
+This project was designed to demonstrate key features of a modern blog application:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 1. Responsive Design
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+- Built with **Tailwind CSS** for responsive layouts.
+- The application includes a grid-based design for the homepage and ensures compatibility across devices.
+
+### 2. Fetching Data
+
+- Posts are fetched from the `https://jsonplaceholder.typicode.com/posts` API using Next.js's `fetch`.
+- Tags are manually generated for each post since the API does not include them.
+
+### 3. Dynamic Routing
+
+- Post details are implemented using Next.js dynamic routes (`/post/[id]`).
+- The `getStaticProps` and `getStaticPaths` methods are used to statically generate post detail pages.
+
+### 4. Tag Filtering
+
+- Tags are dynamically generated based on post titles.
+- Users can filter posts by selecting one or more tags. The list of displayed posts updates accordingly.
+
+---
+
+## Advanced Features
+
+### 1. Infinite Scrolling
+
+- **Purpose**: Efficiently load a large number of posts in chunks without overloading the browser.
+- **Implementation**:
+  - The first 12 posts are displayed initially.
+  - Additional posts are fetched and appended dynamically as the user scrolls down.
+  - This is achieved using the `react-infinite-scroll-component` library.
+- **Benefits**:
+  - Reduces initial page load time.
+  - Enhances user experience for long content lists.
+
+### 2. Scroll-to-Top Button
+
+- **Purpose**: Allows users to quickly return to the top of the page after scrolling.
+- **Implementation**:
+  - The button appears after the user scrolls down 300px.
+  - Clicking the button smoothly scrolls the page to the top.
+  - This was implemented using the `react-scroll-to-top` library for simplicity and smooth animations.
+- **Benefits**:
+  - Improves navigation in long lists.
+  - Adds a polished, user-friendly touch to the application.
+
+### 3. Manual Tag Generation
+
+- **Purpose**: Tags were added manually since the API response did not include them.
+- **Implementation**:
+  - A function generates tags for each post based on predefined keywords (e.g., `#Company Updates`, `#Education`).
+  - Ensures each post has at least one tag and randomly assigns others.
+- **Benefits**:
+  - Enhances the filtering feature and allows dynamic content interactions.
+
+---
+
+## Features Summary
+
+- Responsive grid-based design.
+- Dynamic routing for post detail pages.
+- Infinite scrolling for seamless content loading.
+- Scroll-to-top functionality for improved navigation.
+- Tag-based filtering for personalized content display.
