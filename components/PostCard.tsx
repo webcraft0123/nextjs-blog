@@ -22,7 +22,10 @@ const PostCard = ({ post }: { post: Post }) => (
       </div>
       <div>
         <Link
-          href={`/post/${post.id}`}
+          href={{
+            pathname: `/post/${post.id}`,
+            query: { tags: JSON.stringify(post.tags) },
+          }}
           className="text-[#20FFB6] font-bold mt-2 block px-10 py-3 inline-flex border border-[#20FFB6] rounded-md hover:bg-[#00cc88] hover:text-[white]"
         >
           Read More

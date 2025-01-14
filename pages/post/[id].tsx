@@ -1,3 +1,6 @@
+"use client";
+
+import { useSearchParams } from "next/navigation";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -33,26 +36,36 @@ export const getStaticProps: GetStaticProps<PostDetailsProps> = async ({
   };
 };
 
-const PostDetails = ({ post }: PostDetailsProps) => (
-  <>
-    <Head>
-      <title>Blog - {post.title}</title>
-    </Head>
-    <div>
-      <h1 className="text-5xl text-center font-bold py-8">{post.title}</h1>
-      <Image
-        src="/blog-bg.png"
-        alt="blog"
-        width={500}
-        height={250}
-        layout="responsive"
-        className="rounded-xl bg-[#323232] p-4 my-8"
-      />
-      <p className="text-2xl">{post.body}</p>
-      <p className="mt-4 text-gray-500">Post ID: {post.id}</p>
-      <p className="text-gray-500">Author ID: {post.userId}</p>
-    </div>
-  </>
-);
+const PostDetails = ({ post }: PostDetailsProps) => {
+  const searchParams = useSearchParams();
+  const tags = JSON.parse(searchParams.get("tags") || "[]");
+
+  return (
+    <>
+      <Head>
+        <title>Blog - {post.title}</title>
+      </Head>
+      <div>
+        <h1 className="text-5xl text-center font-bold py-8">{post.title}</h1>
+        <div className="p-4 my-8 rounded-xl bg-[#323232] text-center">
+          <Image
+            src="/blog-bg.png"
+            alt="blog"
+            width={500}
+            height={250}
+            layout="responsive"
+            className=" rounded-xl"
+          />
+          <div className="pt-4 font-bold flex justify-center">
+            <p className="text-gray-400">Post ID: {post.id}</p>
+            <p className="text-gray-400 ml-4">Author ID: {post.userId}</p>
+          </div>
+          <div className="pb-1 text-[#20FFB6]">{tags.join(" ")}</div>
+        </div>
+        <p className="text-2xl">{post.body}</p>
+      </div>
+    </>
+  );
+};
 
 export default PostDetails;

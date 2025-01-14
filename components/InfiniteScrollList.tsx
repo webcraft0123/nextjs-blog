@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import PostCard from "./PostCard";
 import ScrollToTop from "./ScrollToTop";
@@ -10,10 +10,12 @@ interface InfiniteScrollListProps {
 }
 
 const InfiniteScrollList = ({ posts }: InfiniteScrollListProps) => {
-  const [displayedPosts, setDisplayedPosts] = useState<Post[]>(
-    posts.slice(0, 12)
-  );
+  const [displayedPosts, setDisplayedPosts] = useState<Post[]>([]);
   const [hasMore, setHasMore] = useState(true);
+
+  useEffect(() => {
+    setDisplayedPosts(posts.slice(0, 12));
+  }, [posts]);
 
   const fetchMorePosts = () => {
     const currentLength = displayedPosts.length;
