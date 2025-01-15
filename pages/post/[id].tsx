@@ -49,7 +49,7 @@ const PostDetails = ({ post }: PostDetailsProps) => {
         <h1 className="text-xl md:text-5xl text-center font-bold py-4 md:py-8">
           {post.title}
         </h1>
-        <div className="p-4 my-8 rounded-xl bg-[#323232] text-center">
+        <div className="p-4 pb-8 my-8 rounded-xl bg-[#323232] text-center">
           <Image
             src="/blog-bg.png"
             alt="blog"
